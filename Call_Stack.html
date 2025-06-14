@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial, Addition & Subtraction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 20px;
+        }
+        .container {
+            border: 2px solid white;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #1e1e1e;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Factorial, Addition & Subtraction Calculator</h1>
+    <div class="container">
+        <h3>Enter a number:</h3>
+        <input type="number" id="inputNumber" placeholder="Enter a number">
+        <button onclick="calculate()">Calculate</button>
+        <p id="factorialResult"></p>
+        <p id="additionResult"></p>
+        <p id="subtractionResult"></p>
+    </div>
+
+    <script>
+        function factorial(n) {
+            if (n === 0 || n === 1) return 1; // Base case
+            return n * factorial(n - 1); // Recursive call
+        }
+
+        function calculate() {
+            let num = parseInt(document.getElementById("inputNumber").value);
+            if (isNaN(num) || num < 0) {
+                document.getElementById("factorialResult").innerHTML = "Please enter a valid positive number!";
+                document.getElementById("additionResult").innerHTML = "";
+                document.getElementById("subtractionResult").innerHTML = "";
+                return;
+            }
+
+            let fact = factorial(num);
+            let addition = num + fact;
+            let subtraction = num - fact;
+
+            document.getElementById("factorialResult").innerHTML = `Factorial of ${num} is ${fact}`;
+            document.getElementById("additionResult").innerHTML = `Addition: ${num} + ${fact} = ${addition}`;
+            document.getElementById("subtractionResult").innerHTML = `Subtraction: ${num} - ${fact} = ${subtraction}`;
+        }
+    </script>
+
+</body>
+</html>
